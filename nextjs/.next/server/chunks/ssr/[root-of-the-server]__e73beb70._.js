@@ -73,7 +73,7 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-rsc] (ecmascript)");
 ;
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+const API_URL = ("TURBOPACK compile-time value", "http://localhost:1337");
 async function getStrapiData(endpoint) {
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].get(`${API_URL}${endpoint}`);
     if (!res.data || !res.data.data) {
