@@ -12,7 +12,7 @@ export default function Hero() {
         alt="Elzatta Hero Banner"
         fill
         priority
-        className="object-cover"
+        className="object-cover w-full h-full"
       />
 
       {/* Overlay */}

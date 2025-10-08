@@ -28,7 +28,7 @@ const categories = [
 
 export default function ShopByCategories() {
   return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
+    <section className="py-20 max-w-7xl mx-auto px-6 md:px-0">
       <h2 className="text-xl md:text-2xl font-semibold text-center mb-10 tracking-wide">
         SHOP BY CATEGORIES
       </h2>

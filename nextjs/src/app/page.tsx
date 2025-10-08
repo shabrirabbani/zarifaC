@@ -1,7 +1,5 @@
 import ShopByCategories from "./components/Categories";
-import Gallery from "./components/Gallery";
 import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
 import NewArrival from "./components/NewArival";
 
 export default async function Home() {
@@ -71,7 +69,6 @@ export default async function Home() {
   ];
   return (
     <div className="pt-18 md:pt-26">
-      <Navbar />
       <Hero />
       <ShopByCategories />
       <div>
@@ -81,7 +78,6 @@ export default async function Home() {
         {newArrivals.map((section, idx) => (
           <NewArrival key={idx} {...section} />
         ))}
-        <Gallery />
       </div>
     </div>
   );

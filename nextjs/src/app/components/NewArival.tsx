@@ -24,7 +24,7 @@ export default function NewArrivalSection({
   products,
 }: NewArrivalSectionProps) {
   return (
-    <section className="w-full py-5 px-6 md:px-12 bg-white">
+    <section className="w-full py-5 px-6 md:px-0 bg-white max-w-7xl mx-auto">
       <div className="relative w-full aspect-[16/8] overflow-hidden mb-8">
         <Image src={banner} alt={title} fill className="object-cover" />
       </div>
