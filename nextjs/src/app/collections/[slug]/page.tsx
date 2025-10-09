@@ -136,7 +136,7 @@ export default function CollectionPage({ params }: PageProps) {
       <section className="py-16 px-6 md:px-12 bg-white">
         {/* Header Section */}
         <div className="mb-5 md:mb-12">
-          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-gray-900">
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-wider text-center text-gray-900">
             {collection.title}
           </h1>
         </div>

@@ -1,3 +1,4 @@
+import BestSeller from "./components/BestSeller";
 import ShopByCategories from "./components/Categories";
 import Hero from "./components/Hero";
 import NewArrival from "./components/NewArival";
@@ -5,7 +6,7 @@ import NewArrival from "./components/NewArival";
 export default async function Home() {
   const newArrivals = [
     {
-      title: "Pakaian",
+      title: "Dune Series",
       description: "A limited-edition series inspired by the desert landscape.",
       banner: "https://picsum.photos/1200/600?random=1",
       products: [
@@ -78,6 +79,7 @@ export default async function Home() {
         {newArrivals.map((section, idx) => (
           <NewArrival key={idx} {...section} />
         ))}
+        <BestSeller />
       </div>
     </div>
   );

@@ -191,6 +191,12 @@ export default function ProductPage({ params }: PageProps) {
               </div>
             </div>
 
+            <div>
+              <span className="text-sm text-gray-600">
+                SKU : 12345314232543
+              </span>
+            </div>
+
             {/* <Button className="mt-4 text-white px-6 py-3 rounded-none">
               Add to Cart
             </Button> */}

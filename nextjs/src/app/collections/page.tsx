@@ -49,7 +49,7 @@ export default function CollectionsPage() {
     <div className="pt-6 md:pt-20">
       <section className="py-16 px-6 md:px-12">
         <div className=" mb-4 md:mb-8">
-          <h1 className="text-2xl md:text-4xl tracking-tight text-gray-900 font-semibold">
+          <h1 className="text-2xl md:text-4xl tracking-wider text-gray-900 font-semibold text-center">
             Collections
           </h1>
         </div>

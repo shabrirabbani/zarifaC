@@ -20,15 +20,10 @@ export default function Hero() {
 
       {/* Text Content */}
       <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-3xl md:text-5xl font-semibold mb-4">
-          Discover the New Collection
-        </h1>
-        <p className="text-sm md:text-lg mb-6">
-          Stylish. Comfortable. Timeless.
-        </p>
+        <p className="text-sm md:text-lg mb-6">Elegance that never fades</p>
         <Link
           href="/shop"
-          className="bg-white text-black px-6 py-3 font-medium text-sm md:text-base tracking-wide hover:bg-gray-200 transition-all"
+          className="bg-white/20 text-white px-12 py-3 font-medium text-sm md:text-base tracking-wide hover:bg-white/10 transition-all"
         >
           Shop Now
         </Link>

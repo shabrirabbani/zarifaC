@@ -30,23 +30,22 @@ export default function NewArrivalSection({
       </div>
 
       <div className="text-center mb-10 max-w-2xl mx-auto">
-        <h3 className="text-xl md:text-2xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-500 mb-6 text-sm md:text-base">{description}</p>
+        <h3 className="text-xl md:text-2xl font-semibold mb-3 tracking-wide">
+          {title}
+        </h3>
+        <p className="mb-6 text-sm md:text-base">{description}</p>
         <Link
           href={`/shop/${title.toLowerCase()}`}
-          className="inline-block bg-black text-white px-6 py-2 text-sm font-medium hover:bg-gray-900 transition-colors"
+          className="inline-block bg-black text-white px-26 py-4 text-sm font-medium hover:bg-gray-900 transition-colors"
         >
           SHOP NOW
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {products.map((product) => (
           <div key={product.id} className="group cursor-pointer">
-            <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
-              <div className="absolute top-2 left-2 bg-gray-800 text-white text-[10px] font-medium px-2 py-1 uppercase">
-                Limited Edition
-              </div>
+            <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
               <Image
                 src={product.image}
                 alt={product.name}
@@ -55,7 +54,7 @@ export default function NewArrivalSection({
               />
             </div>
             <div className="mt-3 text-center">
-              <p className="text-sm font-medium text-gray-800">
+              <p className="font-medium text-gray-800 tracking-wider">
                 {product.name}
               </p>
               <p className="text-gray-500 text-sm">{product.price}</p>

@@ -136,7 +136,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$
 async function Home() {
     const newArrivals = [
         {
-            title: "Pakaian",
+            title: "Dune Series",
             description: "A limited-edition series inspired by the desert landscape.",
             banner: "https://picsum.photos/1200/600?random=1",
             products: [

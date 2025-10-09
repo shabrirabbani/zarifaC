@@ -32,7 +32,7 @@ function Gallery() {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "mb-4 md:mb-8",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        className: "text-2xl md:text-4xl tracking-tight text-gray-900 font-semibold",
+                        className: "text-2xl md:text-4xl tracking-wider text-center text-gray-900 font-semibold",
                         children: "Gallery"
                     }, void 0, false, {
                         fileName: "[project]/src/app/gallery/page.tsx",
@@ -56,7 +56,7 @@ function Gallery() {
                         }
                     },
                     children: galleryImages.map((src, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                            className: "relative w-full aspect-square cursor-pointer overflow-hidden",
+                            className: "relative w-full aspect-[3/4] cursor-pointer overflow-hidden",
                             whileHover: {
                                 scale: 1.05
                             },

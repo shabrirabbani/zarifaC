@@ -72,9 +72,14 @@ export default function Footer() {
             {data.company.name}
           </h3>
           <div className="space-y-3">
+            <div className="mb-3">
+              <p>CS dan pengaduan</p>
+              <p>{data.company.cs}</p>
+              <p>{data.company.email}</p>
+            </div>
             <div>
-              <p>CS dan pengaduan: {data.company.cs}</p>
-              <p>Pengajuan kerja sama: {data.company.cooperation}</p>
+              <p>Pengajuan kerja sama </p>
+              <p>{data.company.cooperation}</p>
             </div>
             <div>
               <p className="font-semibold">{data.consumerProtection.name}</p>

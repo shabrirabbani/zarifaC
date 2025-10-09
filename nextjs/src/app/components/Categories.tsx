@@ -36,13 +36,12 @@ export default function ShopByCategories() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {categories.map((cat, index) => (
           <Link key={index} href={cat.href} className="group block text-center">
-            <div className="aspect-[3/4] relative overflow-hidden">
+            <div className="aspect-square relative overflow-hidden">
               <Image
                 src={cat.imageUrl}
                 alt={cat.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, 25vw"
               />
             </div>
 

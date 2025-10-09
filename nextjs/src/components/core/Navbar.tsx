@@ -60,20 +60,22 @@ export default function Navbar() {
         <div className="hidden md:block w-6" />
 
         {/* Centered logo */}
-        <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
-          <span className="font-semibold text-4xl text-[#4B1E32] tracking-wide">
-            Zarifa
-          </span>
-        </Link>
+        <div>
+          <Link href="/">
+            <span className="font-semibold text-2xl md:text-4xl tracking-wide ">
+              Zarifa
+            </span>
+          </Link>
+        </div>
 
         {/* User Icon */}
         <div className="flex items-center text-gray-700">
-          <Search className="w-5 h-5 cursor-pointer hover:text-black" />
+          <Search className="w-6 h-6 cursor-pointer hover:text-black" />
         </div>
       </div>
 
       {/* ===== DESKTOP MENU ===== */}
-      <nav className="hidden md:flex justify-center items-center space-x-7 text-xs tracking-wide uppercase font-medium text-gray-800 py-2 pt-3">
+      <nav className="hidden md:flex justify-center items-center space-x-7 text-xs tracking-wide uppercase font-medium text-gray-800 py-2">
         {menus.map((menu) => (
           <div
             key={menu.title}
@@ -82,7 +84,7 @@ export default function Navbar() {
             onMouseLeave={() => setHoveredMenu(null)}
           >
             <Link href={menu.href} className="flex items-center gap-1 relative">
-              <span className="hover:text-black transition-colors flex items-center gap-1">
+              <span className="hover:text-black transition-colors flex items-center gap-1 py-2">
                 {menu.title}
                 {menu.submenu && <ChevronDown className="w-3 h-3 mt-[1px]" />}
               </span>

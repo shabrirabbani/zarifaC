@@ -19,7 +19,7 @@ export default function Gallery() {
     <div className="pt-6 md:pt-20">
       <section className="py-16 px-6 md:px-12">
         <div className="mb-4 md:mb-8">
-          <h2 className="text-2xl md:text-4xl tracking-tight text-gray-900 font-semibold">
+          <h2 className="text-2xl md:text-4xl tracking-wider text-center text-gray-900 font-semibold">
             Gallery
           </h2>
         </div>
@@ -35,7 +35,7 @@ export default function Gallery() {
           {galleryImages.map((src, index) => (
             <motion.div
               key={index}
-              className="relative w-full aspect-square cursor-pointer overflow-hidden"
+              className="relative w-full aspect-[3/4] cursor-pointer overflow-hidden"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
               variants={{
