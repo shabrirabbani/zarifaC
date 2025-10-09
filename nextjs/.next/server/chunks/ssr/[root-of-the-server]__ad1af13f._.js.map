@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 69, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/LEGION/Documents/lalala/freelance/zarifa%20collection/nextjs/src/app/lib/api.ts"],"sourcesContent":["import axios from \"axios\"\r\n\r\nconst baseURL = process.env.NEXT_PUBLIC_STRAPI_API_URL\r\n\r\nexport async function getStrapiData(path:String) {\r\n    try {\r\n        const response = axios.get(`${baseURL}${path}`)\r\n        return response\r\n    } catch (error) {\r\n        console.log(error)\r\n    }\r\n}"],"names":[],"mappings":";;;;AAAA;;AAEA,MAAM;AAEC,eAAe,cAAc,IAAW;IAC3C,IAAI;QACA,MAAM,WAAW,gJAAK,CAAC,GAAG,CAAC,GAAG,UAAU,MAAM;QAC9C,OAAO;IACX,EAAE,OAAO,OAAO;QACZ,QAAQ,GAAG,CAAC;IAChB;AACJ","debugId":null}},
-    {"offset": {"line": 88, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/LEGION/Documents/lalala/freelance/zarifa%20collection/nextjs/src/app/page.tsx"],"sourcesContent":["import { getStrapiData } from \"./lib/api\";\n\nexport default async function Home() {\n  const strapiData = await getStrapiData(\"/api/homepage\");\n  console.log(strapiData);\n\n  const {title, description} = strapiData?.data?.data?.attributes\n  return (\n    <div className=\"text-black\">\n      <h1>{title}</h1>\n      <p>{description}</p>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;;;AAEe,eAAe;IAC5B,MAAM,aAAa,MAAM,IAAA,yIAAa,EAAC;IACvC,QAAQ,GAAG,CAAC;IAEZ,MAAM,EAAC,KAAK,EAAE,WAAW,EAAC,GAAG,YAAY,MAAM,MAAM;IACrD,qBACE,8OAAC;QAAI,WAAU;;0BACb,8OAAC;0BAAI;;;;;;0BACL,8OAAC;0BAAG;;;;;;;;;;;;AAGV","debugId":null}}]
-}
