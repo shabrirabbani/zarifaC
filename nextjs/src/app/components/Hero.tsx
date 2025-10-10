@@ -1,15 +1,22 @@
-"use client";
-
+import { getHero } from "@/services/heroService";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Hero() {
+export default async function Hero() {
+  const hero = await getHero();
+  console.log(hero);
+  const heroImageUrl = hero?.background?.[0]?.url
+    ? process.env.NEXT_PUBLIC_STRAPI_IMG_URL + hero.background[0].url
+    : "https://picsum.photos/1600/700?random=2";
+
+  if (!hero) return null;
+
   return (
     <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="https://picsum.photos/1600/700?random=2"
-        alt="Elzatta Hero Banner"
+        src={heroImageUrl}
+        alt="Hero Banner"
         fill
         priority
         className="object-cover w-full h-full"
@@ -20,12 +27,12 @@ export default function Hero() {
 
       {/* Text Content */}
       <div className="relative z-10 text-center text-white px-4">
-        <p className="text-sm md:text-lg mb-6">Elegance that never fades</p>
+        <p className="text-sm md:text-lg mb-6">{hero.title}</p>
         <Link
-          href="/shop"
+          href={hero.buttonLink}
           className="bg-white/20 text-white px-12 py-3 font-medium text-sm md:text-base tracking-wide hover:bg-white/10 transition-all"
         >
-          Shop Now
+          {hero.buttonText}
         </Link>
       </div>
     </section>

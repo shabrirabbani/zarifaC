@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
         hostname: "picsum.photos",
       },
     ],
+    domains: ["localhost"],
   },
 };
 

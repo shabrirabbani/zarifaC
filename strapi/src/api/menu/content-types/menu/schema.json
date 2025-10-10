@@ -14,16 +14,17 @@
     "title": {
       "type": "string"
     },
-    "slug": {
+    "href": {
       "type": "string"
     },
     "order": {
       "type": "integer"
     },
-    "parent": {
+    "submenus": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::menu.menu"
+      "relation": "oneToMany",
+      "target": "api::submenu.submenu",
+      "mappedBy": "menu"
     }
   }
 }
