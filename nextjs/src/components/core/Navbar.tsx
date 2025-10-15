@@ -32,16 +32,16 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
         {/* Spacer untuk seimbang */}
         <div className="hidden md:block w-6" />
 
-        {/* Centered logo */}
+        {/* Logo */}
         <div>
           <Link href="/">
-            <span className="font-semibold text-2xl md:text-4xl tracking-wide ">
+            <span className="font-semibold text-2xl md:text-4xl tracking-wide">
               Zarifa
             </span>
           </Link>
         </div>
 
-        {/* User Icon */}
+        {/* Search Icon */}
         <div className="flex items-center text-gray-700">
           <Search className="w-6 h-6 cursor-pointer hover:text-black" />
         </div>
@@ -50,17 +50,18 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
       {/* ===== DESKTOP MENU ===== */}
       <nav className="hidden md:flex justify-center items-center space-x-7 text-xs tracking-wide uppercase font-medium text-gray-800 py-2">
         {sortedMenus.map((menu) => {
-          const hasSubmenu = (menu.submenus?.length ?? 0) > 0;
+          const hasSubmenu =
+            Array.isArray(menu.submenus) && menu.submenus.length > 0;
 
           return (
             <div
-              key={menu.title}
+              key={menu.id}
               className="relative group"
               onMouseEnter={() => setHoveredMenu(menu.title)}
               onMouseLeave={() => setHoveredMenu(null)}
             >
               <Link
-                href={menu.href}
+                href={menu.href || "#"}
                 className="flex items-center gap-1 relative"
               >
                 <span className="hover:text-black transition-colors flex items-center gap-1 py-2">
@@ -70,6 +71,7 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
                 <span className="absolute left-0 -bottom-[2px] h-[2px] w-0 bg-black transition-all duration-300 group-hover:w-full"></span>
               </Link>
 
+              {/* Dropdown Submenu */}
               <AnimatePresence>
                 {hasSubmenu && hoveredMenu === menu.title && (
                   <motion.div
@@ -77,13 +79,13 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute left-0 mt-2 bg-white shadow-sm rounded-none py-2 min-w-[150px] z-50"
+                    className="absolute left-0 mt-2 bg-white border shadow-sm py-2 min-w-[160px] z-50"
                   >
-                    {menu.submenus?.map((sub) => (
+                    {menu.submenus.map((sub) => (
                       <Link
                         key={sub.id}
                         href={sub.href}
-                        className="block px-4 py-2 text-sm hover:bg-gray-50 hover:text-[#4B1E32] transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#4B1E32] transition-colors"
                       >
                         {sub.title}
                       </Link>
@@ -108,50 +110,55 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
             className="md:hidden bg-white border-t border-gray-200 shadow-md"
           >
             <div className="flex flex-col px-6 py-3 space-y-2 text-sm">
-              {sortedMenus.map((menu) => (
-                <div key={menu.title}>
-                  <div
-                    className="flex justify-between items-center py-2 font-medium text-gray-800 border-b border-gray-100 cursor-pointer"
-                    onClick={() =>
-                      setOpenSubmenu(
-                        openSubmenu === menu.title ? null : menu.title
-                      )
-                    }
-                  >
-                    <Link href={menu.href}>{menu.title}</Link>
-                    {menu.submenus && (
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform ${
-                          openSubmenu === menu.title ? "rotate-180" : ""
-                        }`}
-                      />
-                    )}
-                  </div>
+              {sortedMenus.map((menu) => {
+                const hasSubmenu =
+                  Array.isArray(menu.submenus) && menu.submenus.length > 0;
 
-                  <AnimatePresence>
-                    {menu.submenus && openSubmenu === menu.title && (
-                      <motion.div
-                        key={menu.title}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="ml-4 mt-1 flex flex-col border-l border-gray-100 overflow-hidden"
-                      >
-                        {menu.submenus?.map((sub) => (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            className="py-1 pl-2 text-gray-600 hover:text-[#4B1E32] transition-colors"
-                          >
-                            {sub.title}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                return (
+                  <div key={menu.id}>
+                    <div
+                      className="flex justify-between items-center py-2 font-medium text-gray-800 border-b border-gray-100 cursor-pointer"
+                      onClick={() =>
+                        setOpenSubmenu(
+                          openSubmenu === menu.title ? null : menu.title
+                        )
+                      }
+                    >
+                      <Link href={menu.href || "#"}>{menu.title}</Link>
+                      {hasSubmenu && (
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            openSubmenu === menu.title ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+                    </div>
+
+                    <AnimatePresence>
+                      {hasSubmenu && openSubmenu === menu.title && (
+                        <motion.div
+                          key={menu.title}
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="ml-4 mt-1 flex flex-col border-l border-gray-100 overflow-hidden"
+                        >
+                          {menu.submenus.map((sub) => (
+                            <Link
+                              key={sub.id}
+                              href={sub.href}
+                              className="py-1 pl-2 text-gray-600 hover:text-[#4B1E32] transition-colors"
+                            >
+                              {sub.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         )}

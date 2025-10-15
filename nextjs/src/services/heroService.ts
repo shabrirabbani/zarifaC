@@ -1,17 +1,37 @@
 import { getStrapiData } from "@/lib/strapi";
 import { Hero } from "@/type";
+import qs from "qs";
 
 export async function getHero(): Promise<Hero | null> {
-  const res = await getStrapiData<Hero>("/hero?populate=background");
+  const query = qs.stringify(
+    {
+      populate: {
+        background: {
+          fields: ["url", "formats"],
+        },
+      },
+    },
+    { encodeValuesOnly: true }
+  );
+
+  const res = await getStrapiData<{ data: Hero }>(`/hero?${query}`);
 
   if (!res?.data) return null;
-  const heroData = Array.isArray(res.data) ? res.data[0] : res.data;
 
-  return {
+  const heroData = res.data;
+
+  const backgroundImage = heroData.background?.[0]?.url
+    ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${heroData.background[0].url}`
+    : null;
+
+  const hero: Hero = {
     id: heroData.id,
     title: heroData.title,
-    background: heroData.background,
     buttonText: heroData.buttonText,
     buttonLink: heroData.buttonLink,
+    background: heroData.background,
+    backgroundUrl: backgroundImage,
   };
+
+  return hero;
 }

@@ -1,57 +1,35 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { getGallery } from "@/services/galleryService";
 import Image from "next/image";
 
-const galleryImages = [
-  "https://picsum.photos/600/600?random=1",
-  "https://picsum.photos/600/600?random=2",
-  "https://picsum.photos/600/600?random=3",
-  "https://picsum.photos/600/600?random=4",
-  "https://picsum.photos/600/600?random=5",
-  "https://picsum.photos/600/600?random=6",
-  "https://picsum.photos/600/600?random=7",
-  "https://picsum.photos/600/600?random=8",
-];
+export default async function Gallery() {
+  const gallery = await getGallery();
 
-export default function Gallery() {
+  if (!gallery) return null;
+
   return (
-    <div className="pt-6 md:pt-20">
+    <div className="pt-6 md:pt-24 max-w-7xl mx-auto">
       <section className="py-16 px-6 md:px-12">
         <div className="mb-4 md:mb-8">
           <h2 className="text-2xl md:text-4xl tracking-wider text-center text-gray-900 font-semibold">
-            Gallery
+            {gallery.title}
           </h2>
         </div>
 
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-5 gap-4 "
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.05 } },
-          }}
-        >
-          {galleryImages.map((src, index) => (
-            <motion.div
-              key={index}
-              className="relative w-full aspect-[3/4] cursor-pointer overflow-hidden"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {gallery.image.map((img) => (
+            <div
+              key={img.id}
+              className="relative w-full aspect-[3/4] cursor-pointer overflow-hidden group"
             >
               <Image
-                src={src}
-                alt={`Gallery ${index + 1}`}
+                src={img.url}
+                alt={img.name}
                 fill
-                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
     </div>
   );

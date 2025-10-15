@@ -12,20 +12,34 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
-    "slug": {
-      "type": "uid"
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "articles": {
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "isNewArrival": {
+      "type": "boolean"
+    },
+    "isBestSeller": {
+      "type": "boolean"
+    },
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article",
+      "target": "api::product.product",
       "mappedBy": "category"
-    },
-    "description": {
-      "type": "text"
     }
   }
 }

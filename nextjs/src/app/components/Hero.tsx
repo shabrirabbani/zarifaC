@@ -4,18 +4,13 @@ import Link from "next/link";
 
 export default async function Hero() {
   const hero = await getHero();
-  console.log(hero);
-  const heroImageUrl = hero?.background?.[0]?.url
-    ? process.env.NEXT_PUBLIC_STRAPI_IMG_URL + hero.background[0].url
-    : "https://picsum.photos/1600/700?random=2";
-
   if (!hero) return null;
 
   return (
     <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src={heroImageUrl}
+        src={hero.backgroundUrl || "/placeholder.jpg"}
         alt="Hero Banner"
         fill
         priority

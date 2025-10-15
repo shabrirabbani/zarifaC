@@ -1,33 +1,30 @@
-import axios, { AxiosError } from "axios";
+// lib/strapi.ts
+import qs from "qs";
 
-const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
-
-if (!API_URL) {
-  throw new Error("❌ Missing NEXT_PUBLIC_STRAPI_API_URL in .env");
-}
-
-export const strapi = axios.create({
-  baseURL: API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-export type StrapiResponse<T> = {
-  data: T | T[];
-  meta?: Record<string, any>;
-};
+const STRAPI_URL =
+  process.env.NEXT_PUBLIC_STRAPI_API_URL ?? "http://localhost:1337";
 
 export async function getStrapiData<T>(
   endpoint: string,
-  params?: Record<string, any>
-): Promise<StrapiResponse<T> | null> {
-  try {
-    const res = await strapi.get<StrapiResponse<T>>(endpoint, { params });
-    return res.data;
-  } catch (error) {
-    const err = error as AxiosError;
-    console.error(`❌ Failed to fetch from ${endpoint}:`, err.message);
-    return null;
+  query?: Record<string, any>
+): Promise<T> {
+  // Jika endpoint sudah mengandung '?', jangan tambahkan lagi
+  const hasQuery = endpoint.includes("?");
+  const queryString =
+    query && !hasQuery
+      ? `?${qs.stringify(query, { encodeValuesOnly: true })}`
+      : "";
+
+  const url = `${STRAPI_URL}/api${endpoint}${queryString}`;
+
+  const res = await fetch(url, {
+    next: { revalidate: 60 }, // revalidate setiap 60 detik
+  });
+
+  if (!res.ok) {
+    console.error(`❌ Failed to fetch: ${url}`);
+    throw new Error(`Failed to fetch ${endpoint}`);
   }
+
+  return res.json();
 }

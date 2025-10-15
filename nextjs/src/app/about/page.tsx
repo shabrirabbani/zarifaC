@@ -1,51 +1,45 @@
-"use client";
-
+import { getAbout } from "@/services/aboutService";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 
-const galleryImages = [
-  "https://picsum.photos/600/600?random=1",
-  "https://picsum.photos/600/600?random=2",
-  "https://picsum.photos/600/600?random=3",
-  "https://picsum.photos/600/600?random=4",
-  "https://picsum.photos/600/600?random=5",
-  "https://picsum.photos/600/600?random=6",
-  "https://picsum.photos/600/600?random=7",
-  "https://picsum.photos/600/600?random=8",
-];
+export default async function About() {
+  const about = await getAbout();
+  if (!about) return null;
 
-export default function About() {
+  const blocks =
+    typeof about.content === "string"
+      ? JSON.parse(about.content)
+      : about.content;
+
   return (
-    <div className="pt-6 md:pt-20">
+    <div className="pt-6 md:pt-24 max-w-7xl mx-auto">
       <section className="py-16 px-6 md:px-12">
         <div className="mb-4 md:mb-8">
           <h2 className="text-2xl md:text-4xl tracking-wider text-center text-gray-900 font-semibold">
-            Our Story
+            {about.title}
           </h2>
         </div>
 
         <div>
           <Image
-            src="https://picsum.photos/1200/600?random=1"
-            alt="Elzatta Hero Banner"
+            src={
+              about.image
+                ? typeof about.image === "string"
+                  ? about.image
+                  : about.image.url.startsWith("http")
+                  ? about.image.url
+                  : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${about.image.url}`
+                : "/placeholder.jpg"
+            }
+            alt={about.title}
             width={1200}
             height={600}
             className="object-cover w-full h-full"
           />
-          <p className="text-base md:text-lg text-gray-600 text-justify mt-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-            consectetur, quos natus quas quia quae quod quibusdam quidem
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-            quaequae quaequae quaequae quaequae quaequae quaequae quaequae
-          </p>
+
+          <div className="text-base md:text-lg text-gray-600 text-justify mt-5">
+            <BlocksRenderer content={blocks} />
+          </div>
         </div>
       </section>
     </div>

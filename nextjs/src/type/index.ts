@@ -29,21 +29,88 @@ export type Menu = {
   title: string;
   href: string;
   order: number;
-  submenus?: Submenu[];
+  submenus: Submenu[];
 };
 export type Hero = {
   id: number;
   title: string;
-  background: {
-    id: number;
-    url: string;
-    formats?: {
-      large?: { url: string };
-      medium?: { url: string };
-      small?: { url: string };
-      thumbnail?: { url: string };
-    };
-  }[];
   buttonText: string;
   buttonLink: string;
+  background: StrapiImage[];
+  backgroundUrl?: string | null;
+};
+
+export type About = {
+  id: number;
+  title: string;
+  content: string;
+  image?: StrapiImage | null;
+};
+
+export type Gallery = {
+  id: number;
+  title: string;
+  image: StrapiImage[];
+};
+
+export type StrapiImageFormat = {
+  ext: string;
+  url: string;
+  width: number;
+  height: number;
+};
+
+export type StrapiImage = {
+  id: number;
+  name: string;
+  url: string;
+  formats?: {
+    large?: StrapiImageFormat;
+    medium?: StrapiImageFormat;
+    small?: StrapiImageFormat;
+    thumbnail?: StrapiImageFormat;
+  };
+};
+
+export type Category = {
+  id: number;
+  title: string;
+  slug: string;
+  description?: string;
+  image?: StrapiImage;
+};
+
+export type Product = {
+  id: number;
+  title: string;
+  slug: string;
+  description?: string;
+  price?: string;
+  sku?: string;
+  isNewArrival?: boolean;
+  isBestSeller?: boolean;
+  image?: StrapiImage[];
+  product_variants?: ProductVariant[];
+};
+
+export type ProductVariant = {
+  id: number;
+  title: string;
+  slug: string;
+  sku?: string;
+  priceOverride?: string;
+  isNewArrival?: boolean;
+  isBestSeller?: boolean;
+  image?: StrapiImage[];
+};
+
+export type Collection = {
+  id: number;
+  title: string;
+  slug: string;
+  description?: string;
+  isNewArrival?: boolean;
+  isBestSeller?: boolean;
+  image?: StrapiImage;
+  products?: Product[];
 };
