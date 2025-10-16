@@ -18,6 +18,9 @@
       "type": "uid",
       "targetField": "title"
     },
+    "priceOverride": {
+      "type": "biginteger"
+    },
     "sku": {
       "type": "string"
     },
@@ -30,9 +33,6 @@
         "videos",
         "audios"
       ]
-    },
-    "priceOverride": {
-      "type": "string"
     },
     "isNewArrival": {
       "type": "boolean"

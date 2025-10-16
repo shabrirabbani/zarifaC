@@ -78,6 +78,7 @@ export type Category = {
   slug: string;
   description?: string;
   image?: StrapiImage;
+  products?: Product[];
 };
 
 export type Product = {
@@ -85,12 +86,13 @@ export type Product = {
   title: string;
   slug: string;
   description?: string;
-  price?: string;
+  price?: number;
   sku?: string;
   isNewArrival?: boolean;
   isBestSeller?: boolean;
   image?: StrapiImage[];
   product_variants?: ProductVariant[];
+  category?: Category;
 };
 
 export type ProductVariant = {
@@ -98,7 +100,7 @@ export type ProductVariant = {
   title: string;
   slug: string;
   sku?: string;
-  priceOverride?: string;
+  priceOverride?: number;
   isNewArrival?: boolean;
   isBestSeller?: boolean;
   image?: StrapiImage[];

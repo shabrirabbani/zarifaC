@@ -676,7 +676,7 @@ export interface ApiProductVariantProductVariant
       'api::product-variant.product-variant'
     > &
       Schema.Attribute.Private;
-    priceOverride: Schema.Attribute.String;
+    priceOverride: Schema.Attribute.BigInteger;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     sku: Schema.Attribute.String;
@@ -720,7 +720,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
-    price: Schema.Attribute.String;
+    price: Schema.Attribute.BigInteger;
     product_variants: Schema.Attribute.Relation<
       'oneToMany',
       'api::product-variant.product-variant'

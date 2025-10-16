@@ -1,3 +1,4 @@
+import { formatRupiah } from "@/lib/formatRp";
 import { getProducts } from "@/services/productService";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +36,9 @@ export default async function BestSeller() {
               <p className="font-medium text-gray-800 tracking-wider">
                 {product.title}
               </p>
-              <p className="text-gray-500 text-sm">Rp {product.price ?? "0"}</p>
+              <p className="text-gray-500 text-sm">
+                {formatRupiah(product.price ?? 0)}
+              </p>
             </div>
           </Link>
         ))}

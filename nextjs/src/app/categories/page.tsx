@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function CategoriesPage() {
-  const collections = await getCategory();
+  const categories = await getCategory();
 
   return (
     <div className="pt-6 md:pt-24">
@@ -15,22 +15,22 @@ export default async function CategoriesPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {collections.map((collection) => (
+          {categories.map((category) => (
             <div
-              key={collection.id}
+              key={category.id}
               className="relative cursor-pointer overflow-hidden group"
             >
               <div className="relative w-full aspect-[4/3]">
-                <Link href={`/collections/${collection.slug}`}>
+                <Link href={`/categories/${category.slug}`}>
                   <Image
-                    src={collection.image?.url || "/placeholder.jpg"}
-                    alt={collection.title}
+                    src={category.image?.url || "/placeholder.jpg"}
+                    alt={category.title}
                     fill
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                     <h2 className="text-white text-lg md:text-xl font-semibold text-center px-2">
-                      {collection.title}
+                      {category.title}
                     </h2>
                   </div>
                 </Link>

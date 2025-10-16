@@ -1,5 +1,6 @@
 "use client";
 
+import { formatRupiah } from "@/lib/formatRp";
 import { Product } from "@/type";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +42,7 @@ export default function NewArrivalSection({
           <p className="mb-6 text-sm md:text-base">{description}</p>
         )}
         <Link
-          href={`/collection/${slug}`}
+          href={`/collections/${slug}`}
           className="inline-block bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-900 transition-colors"
         >
           SHOP NOW
@@ -72,7 +73,9 @@ export default function NewArrivalSection({
                     <p className="font-medium text-gray-800 tracking-wider">
                       {product.title}
                     </p>
-                    <p className="text-gray-500 text-sm">{product.price}</p>
+                    <p className="text-gray-500 text-sm">
+                      {formatRupiah(product.price ?? 0)}
+                    </p>
                   </div>
                 </Link>
               </div>

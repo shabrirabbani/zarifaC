@@ -22,7 +22,7 @@
       "type": "string"
     },
     "price": {
-      "type": "string"
+      "type": "biginteger"
     },
     "sku": {
       "type": "string"

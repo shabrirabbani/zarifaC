@@ -1,5 +1,6 @@
 "use client";
 
+import { formatRupiah } from "@/lib/formatRp";
 import { Product, ProductVariant } from "@/type";
 import Image from "next/image";
 import { useState } from "react";
@@ -44,7 +45,9 @@ export default function ProductPage({ product }: { product: Product }) {
               {displayedTitle}
             </h1>
 
-            <span className="text-xl text-gray-700">Rp {displayedPrice}</span>
+            <span className="text-xl text-gray-700">
+              {formatRupiah(displayedPrice ?? 0)}
+            </span>
 
             {/* --- Variants --- */}
             <div className="mt-2">
