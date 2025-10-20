@@ -1,5 +1,6 @@
 "use client";
 
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -10,6 +11,9 @@ type Props = {
 
 export default function ProductDescription({ description }: Props) {
   const [isOpen, setIsOpen] = useState(true);
+
+  const descParsing =
+    typeof description === "string" ? JSON.parse(description) : description;
 
   return (
     <div className="mt-4">
@@ -35,7 +39,7 @@ export default function ProductDescription({ description }: Props) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="text-gray-600 mt-2">{description}</p>
+            <BlocksRenderer content={descParsing} />
           </motion.div>
         )}
       </AnimatePresence>
