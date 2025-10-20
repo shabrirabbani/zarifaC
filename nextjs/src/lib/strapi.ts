@@ -22,7 +22,6 @@ export async function getStrapiData<T>(
   });
 
   if (!res.ok) {
-    console.error(`❌ Failed to fetch: ${url}`);
     throw new Error(`Failed to fetch ${endpoint}`);
   }
 

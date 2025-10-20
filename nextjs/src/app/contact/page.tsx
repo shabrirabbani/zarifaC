@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import Image from "next/image";
 
 export default function Contact() {
   return (
@@ -23,7 +23,7 @@ export default function Contact() {
           {/* LEFT: FORM */}
           <form
             className="space-y-6"
-            action="mailto:youremail@example.com"
+            action="mailto:info@zarifacollection.com"
             method="POST"
             encType="text/plain"
           >
@@ -76,22 +76,28 @@ export default function Contact() {
 
             <div className="flex justify-center md:justify-start space-x-6">
               <a
-                href="https://facebook.com"
+                href="https://www.tiktok.com/@zarifa.collection?_t=ZS-90hZ0jaUXcV&_r=1"
                 className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition"
               >
-                <Facebook className="w-5 h-5 text-gray-700" />
+                <Image
+                  src="/tiktok.svg"
+                  alt="Tiktok"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 text-gray-700"
+                />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/zarifascarves"
                 className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition"
               >
-                <Instagram className="w-5 h-5 text-gray-700" />
-              </a>
-              <a
-                href="https://twitter.com"
-                className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition"
-              >
-                <Twitter className="w-5 h-5 text-gray-700" />
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5 text-gray-700"
+                />
               </a>
             </div>
           </div>
