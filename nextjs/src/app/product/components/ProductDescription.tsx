@@ -21,7 +21,9 @@ export default function ProductDescription({ description }: Props) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between border-b border-gray-300 py-2 w-full"
       >
-        <span className="font-medium">Description</span>
+        <span className="font-medium text-xs md:text-sm text-gray-600 tracking-wider">
+          Description
+        </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -39,7 +41,9 @@ export default function ProductDescription({ description }: Props) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <BlocksRenderer content={descParsing} />
+            <div className="text-xs text-gray-600 mt-2 font-light tracking-wider">
+              <BlocksRenderer content={descParsing} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

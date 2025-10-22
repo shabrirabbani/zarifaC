@@ -35,15 +35,17 @@ export default function NewArrivalSection({
 
       {/* Title & Description */}
       <div className="text-center mb-10 max-w-2xl mx-auto">
-        <h3 className="text-xl md:text-2xl font-semibold mb-3 tracking-wide">
+        <h3 className="text-base md:text-xl font-medium mb-3 tracking-wide">
           {title}
         </h3>
         {description && (
-          <p className="mb-6 text-sm md:text-base">{description}</p>
+          <p className="mb-6 text-xs md:text-sm tracking-wider text-[#454545]">
+            {description}
+          </p>
         )}
         <Link
           href={`/collections/${slug}`}
-          className="inline-block bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-900 transition-colors"
+          className="inline-block bg-black text-white px-16 py-3 text-xs font-medium hover:bg-gray-900 transition-colors"
         >
           SHOP NOW
         </Link>
@@ -70,10 +72,10 @@ export default function NewArrivalSection({
                     />
                   </div>
                   <div className="mt-3 text-center">
-                    <p className="font-medium text-gray-800 tracking-wider">
+                    <p className=" text-gray-800 tracking-wider text-xs md:text-sm mb-1">
                       {product.title}
                     </p>
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-gray-500 text-xs tracking-wider">
                       {formatRupiah(product.price ?? 0)}
                     </p>
                   </div>

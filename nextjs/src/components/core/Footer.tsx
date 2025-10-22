@@ -68,20 +68,20 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
         {/* === Bagian kiri: Layanan Pengaduan Konsumen === */}
         <div>
-          <h3 className="font-semibold text-sm tracking-widest mb-4">
+          <h3 className="font-medium text-xs tracking-widest mb-4">
             {data.company.name}
           </h3>
-          <div className="space-y-3">
-            <div className="mb-3 tracking-wider">
+          <div className="space-y-3 text-xs">
+            <div className="mb-3 tracking-wider grid gap-1">
               <p>CS dan pengaduan</p>
               <p>{data.company.cs}</p>
               <p>{data.company.email}</p>
             </div>
-            <div className="mb-3 tracking-wider">
+            <div className="mb-3 tracking-wider grid gap-1">
               <p>Pengajuan kerja sama </p>
               <p>{data.company.cooperation}</p>
             </div>
-            <div className="mb-3 tracking-wider">
+            <div className="mb-3 tracking-wider grid gap-1">
               <p className="font-semibold">{data.consumerProtection.name}</p>
               <p>{data.consumerProtection.ministry}</p>
               <p>
@@ -96,10 +96,10 @@ export default function Footer() {
 
         {/* === Bagian tengah: Informasi === */}
         <div>
-          <h3 className="font-semibold text-sm tracking-widest mb-4">
+          <h3 className="font-medium text-xs tracking-widest mb-4">
             INFORMASI
           </h3>
-          <ul className="space-y-2 tracking-wider">
+          <ul className="space-y-2 tracking-wider text-xs grid gap-1">
             {data.informationLinks.map((item) => (
               <li key={item.title}>
                 <Link
@@ -115,10 +115,10 @@ export default function Footer() {
 
         {/* === Bagian kanan: Sosial Media === */}
         <div>
-          <h3 className="font-semibold text-sm tracking-widest mb-4">
+          <h3 className="font-medium text-xs tracking-widest mb-4">
             SOSIAL MEDIA
           </h3>
-          <p className="text-gray-600 mb-4 tracking-wider">
+          <p className="text-gray-600 mb-4 tracking-wider text-xs">
             Ikuti kami untuk mendapatkan informasi terbaru, promo, dan
             inspirasi.
           </p>
@@ -132,7 +132,7 @@ export default function Footer() {
                     width={20}
                     height={20}
                   />
-                  <span className="mb-1">zarifascarves</span>
+                  <span className="mb-1 text-xs">zarifascarves</span>
                 </div>
               </Link>
             )}
@@ -145,7 +145,7 @@ export default function Footer() {
                     width={20}
                     height={20}
                   />
-                  <span className="mb-1">zarifa.collection</span>
+                  <span className="mb-1 text-xs">zarifa.collection</span>
                 </div>
               </Link>
             )}

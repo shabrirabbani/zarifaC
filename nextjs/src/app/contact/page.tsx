@@ -11,7 +11,7 @@ export default function Contact() {
     <div className="pt-6 md:pt-24 max-w-7xl mx-auto">
       <section className="py-16 px-6 md:px-12">
         <div className="mb-8 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-wider text-center text-gray-900">
+          <h2 className="text-lg md:text-2xl font-medium tracking-wider text-center text-gray-900">
             Contact Us
           </h2>
           <p className="text-gray-500 mt-2 text-center ">

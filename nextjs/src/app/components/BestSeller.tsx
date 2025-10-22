@@ -10,8 +10,8 @@ export default async function BestSeller() {
   );
 
   return (
-    <section className="py-20 max-w-7xl mx-auto px-6 md:px-0">
-      <h2 className="text-xl md:text-2xl font-semibold text-center mb-10 tracking-wide">
+    <section className="py-10 max-w-7xl mx-auto px-6 md:px-0">
+      <h2 className="text-lg md:text-2xl font-medium text-center mb-10 tracking-wide">
         BEST SELLER
       </h2>
 
@@ -33,10 +33,10 @@ export default async function BestSeller() {
             </div>
 
             <div className="mt-3 text-center">
-              <p className="font-medium text-gray-800 tracking-wider">
+              <p className=" text-gray-800 tracking-wider text-xs md:text-sm mb-1">
                 {product.title}
               </p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-xs tracking-wider">
                 {formatRupiah(product.price ?? 0)}
               </p>
             </div>

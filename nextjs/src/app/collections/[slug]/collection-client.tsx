@@ -66,7 +66,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
       <section className="py-16 px-6 md:px-12 bg-white">
         {/* Header */}
         <div className="mb-5 md:mb-12">
-          <h1 className="text-2xl md:text-4xl font-semibold tracking-wider text-center text-gray-900">
+          <h1 className="text-lg md:text-2xl font-medium tracking-wider text-center text-gray-900">
             {collection.title}
           </h1>
         </div>
@@ -74,13 +74,15 @@ export default function CollectionClient({ collection }: { collection: any }) {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* === Sidebar Filter === */}
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-28 self-start h-fit">
-            <h2 className="mb-4 tracking-widest text-gray-900">FILTER BY:</h2>
+            <h2 className="mb-4 tracking-widest text-gray-900 text-xs md:text-sm">
+              FILTER BY:
+            </h2>
 
             {/* Active Filters */}
             {(selectedFilters.length > 0 || selectedPrice) && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {selectedPrice && (
-                  <div className="flex items-center gap-1 border rounded-md px-2 py-1 text-sm">
+                  <div className="flex items-center gap-1 border rounded-md px-2 py-1 text-xs">
                     Price: {selectedPrice}{" "}
                     <button
                       onClick={() => setSelectedPrice(null)}
@@ -93,7 +95,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                 {selectedFilters.map((filter) => (
                   <div
                     key={filter}
-                    className="flex items-center gap-1 border rounded-md px-2 py-1 text-sm"
+                    className="flex items-center gap-1 border rounded-md px-2 py-1 text-xs"
                   >
                     {filter}
                     <button
@@ -110,7 +112,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                 ))}
                 <button
                   onClick={handleClear}
-                  className="text-gray-700 text-sm underline ml-auto"
+                  className="text-gray-700 text-xs underline ml-auto"
                 >
                   Clear All
                 </button>
@@ -126,7 +128,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                   setOpen(open === "Category" ? null : "Category")
                 }
               >
-                <CollapsibleTrigger className="flex justify-between w-full font-medium text-gray-800">
+                <CollapsibleTrigger className="flex justify-between w-full  text-gray-800 text-xs md:text-sm">
                   Category
                   {open === "Category" ? (
                     <Minus size={16} />
@@ -139,7 +141,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                     {categories.map((cat) => (
                       <label
                         key={cat}
-                        className="flex items-center gap-2 text-gray-700 text-sm cursor-pointer"
+                        className="flex items-center gap-2 text-gray-700 text-xs cursor-pointer"
                       >
                         <Checkbox
                           checked={selectedFilters.includes(cat)}
@@ -157,7 +159,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                 open={open === "Price"}
                 onOpenChange={() => setOpen(open === "Price" ? null : "Price")}
               >
-                <CollapsibleTrigger className="flex justify-between w-full font-medium text-gray-800">
+                <CollapsibleTrigger className="flex justify-between w-full text-xs md:text-sm text-gray-800">
                   Price
                   {open === "Price" ? <Minus size={16} /> : <Plus size={16} />}
                 </CollapsibleTrigger>
@@ -169,7 +171,7 @@ export default function CollectionClient({ collection }: { collection: any }) {
                     {priceRanges.map((range) => (
                       <div
                         key={range.label}
-                        className="flex items-center gap-2 text-gray-700 text-sm"
+                        className="flex items-center gap-2 text-gray-700 text-xs"
                       >
                         <RadioGroupItem value={range.label} id={range.label} />
                         <label htmlFor={range.label}>{range.label}</label>
@@ -201,10 +203,10 @@ export default function CollectionClient({ collection }: { collection: any }) {
                       />
                     </div>
                     <div className="mt-2 text-center">
-                      <h3 className="text-lg font-semibold text-gray-800">
+                      <h3 className="text-xs md:text-sm font-medium text-gray-800 tracking-wider">
                         {product.title}
                       </h3>
-                      <p className="text-gray-600 mt-1">
+                      <p className="text-gray-600 mt-1 text-xs tracking-wider">
                         {formatRupiah(product.price)}
                       </p>
                     </div>

@@ -37,9 +37,9 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
           onClick={handleToggleMobile}
         >
           {mobileOpen ? (
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           ) : (
-            <MenuIcon className="w-6 h-6" />
+            <MenuIcon className="w-5 h-5" />
           )}
         </button>
 
@@ -54,7 +54,7 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
               alt="Logo"
               width={500}
               height={500}
-              className="w-full h-4 md:h-5"
+              className="w-full h-3 md:h-5"
             />
           </Link>
         </div>
@@ -63,9 +63,9 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
         <div className="flex items-center text-gray-700">
           <button onClick={handleToggleSearch}>
             {searchOpen ? (
-              <X className="w-6 h-6 cursor-pointer hover:text-black" />
+              <X className="w-5 h-5 cursor-pointer hover:text-black" />
             ) : (
-              <Search className="w-6 h-6 cursor-pointer hover:text-black" />
+              <Search className="w-5 h-5 cursor-pointer hover:text-black" />
             )}
           </button>
         </div>
@@ -109,7 +109,7 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
                       <Link
                         key={sub.id}
                         href={sub.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#4B1E32] transition-colors"
+                        className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-50 hover:text-[#4B1E32] transition-colors"
                       >
                         {sub.title}
                       </Link>

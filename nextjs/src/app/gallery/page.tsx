@@ -10,7 +10,7 @@ export default async function Gallery() {
     <div className="pt-6 md:pt-24 max-w-7xl mx-auto">
       <section className="py-16 px-6 md:px-12">
         <div className="mb-4 md:mb-8">
-          <h2 className="text-2xl md:text-4xl tracking-wider text-center text-gray-900 font-semibold">
+          <h2 className="text-lg md:text-2xl tracking-wider text-center text-gray-900 font-medium">
             {gallery.title}
           </h2>
         </div>

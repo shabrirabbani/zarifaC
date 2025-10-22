@@ -16,8 +16,8 @@ export default async function Home() {
       <Hero />
       <ShopByCategories />
       <div>
-        <h2 className="text-xl md:text-2xl font-semibold text-center mb-8 tracking-wide">
-          NEW ARRIVALS
+        <h2 className="text-lg md:text-2xl font-medium text-center md:mb-8 tracking-wide">
+          New Arrival
         </h2>
         {newArrivals?.map((section, idx) => (
           <NewArrivalSection key={idx} {...section} />

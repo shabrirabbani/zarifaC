@@ -8,7 +8,7 @@ import SafeHydrate from "./hydrate";
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased`}>
+      <body
+        className={`${poppins.variable} antialiased`}
+        style={{ fontFamily: "var(--font-poppins)" }}
+      >
         <SafeHydrate>
           <NavbarWrapper />
           {children}

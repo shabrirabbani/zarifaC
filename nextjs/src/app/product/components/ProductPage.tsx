@@ -41,17 +41,19 @@ export default function ProductPage({ product }: { product: Product }) {
 
           {/* --- Right: Info --- */}
           <div className="w-full md:w-1/2 flex flex-col justify-start gap-4">
-            <h1 className="text-3xl font-semibold text-gray-900">
+            <h1 className="text-base md:text-xl font-medium text-gray-900 tracking-wider">
               {displayedTitle}
             </h1>
 
-            <span className="text-xl text-gray-700">
+            <span className=" text-gray-700 tracking-wider text-sm md:text-base">
               {formatRupiah(displayedPrice ?? 0)}
             </span>
 
             {/* --- Variants --- */}
             <div className="mt-2">
-              <span className="font-medium mr-2">Variant:</span>
+              <span className="font-medium mr-2 text-xs md:text-sm">
+                Variant:
+              </span>
               <div className="flex gap-2 mt-1 flex-wrap">
                 {allVariants.map((variant, idx) => {
                   const isMain = (variant as any).isMainProduct;
@@ -94,7 +96,9 @@ export default function ProductPage({ product }: { product: Product }) {
 
             {/* --- SKU & Description --- */}
             <div className="mt-2">
-              <span className="text-sm text-gray-600">SKU: {displayedSku}</span>
+              <span className="text-xs text-gray-600 tracking-wider">
+                SKU: {displayedSku}
+              </span>
             </div>
 
             {/* --- Description --- */}
