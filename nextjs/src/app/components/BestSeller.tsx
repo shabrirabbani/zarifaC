@@ -36,7 +36,7 @@ export default async function BestSeller() {
               <p className=" text-gray-800 tracking-wider text-xs md:text-sm mb-1">
                 {product.title}
               </p>
-              <p className="text-gray-500 text-xs tracking-wider">
+              <p className="text-gray-500 text-[10px] md:text-xs tracking-wider">
                 {formatRupiah(product.price ?? 0)}
               </p>
             </div>

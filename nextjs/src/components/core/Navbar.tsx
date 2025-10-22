@@ -47,14 +47,14 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
         <div className="hidden md:block w-6" />
 
         {/* Logo */}
-        <div>
+        <div className="w-48 md:w-auto">
           <Link href="/">
             <Image
               src="/zarifa_name.png"
               alt="Logo"
               width={500}
               height={500}
-              className="w-full h-3 md:h-5"
+              className="w-full h-auto md:h-5"
             />
           </Link>
         </div>
