@@ -98,6 +98,7 @@ export type Product = {
 export type ProductVariant = {
   id: number;
   title: string;
+  variantName?: string;
   slug: string;
   sku?: string;
   priceOverride?: number;

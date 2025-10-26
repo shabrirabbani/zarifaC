@@ -33,6 +33,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     ? item.product_variants.map((v: ProductVariant) => ({
         id: v.id,
         title: v.title,
+        variantName: v.variantName ?? "",
         slug: v.slug,
         sku: v.sku ?? "",
         priceOverride: v.priceOverride ?? "",
@@ -105,6 +106,7 @@ export async function getProducts(): Promise<Product[]> {
       ? item.product_variants.map((v: ProductVariant) => ({
           id: v.id,
           title: v.title,
+          variantName: v.variantName ?? "",
           slug: v.slug,
           sku: v.sku ?? "",
           priceOverride: v.priceOverride ?? "",

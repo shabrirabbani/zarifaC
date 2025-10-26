@@ -4,7 +4,6 @@ import { formatRupiah } from "@/lib/formatRp";
 import { Product, ProductVariant } from "@/type";
 import Image from "next/image";
 import { useState } from "react";
-import ProductDescription from "./ProductDescription";
 import ProductImageGallery from "./ProductImageGallery";
 
 export default function ProductPage({ product }: { product: Product }) {
@@ -15,6 +14,7 @@ export default function ProductPage({ product }: { product: Product }) {
   // Tentukan data yang sedang aktif (product atau variant)
   const displayedImages = activeVariant?.image ?? product.image;
   const displayedTitle = activeVariant?.title ?? product.title;
+  const displayedVariant = activeVariant?.variantName ?? "";
   const displayedPrice = activeVariant?.priceOverride || product.price;
   const displayedSku = activeVariant?.sku ?? product.sku;
 
@@ -52,7 +52,7 @@ export default function ProductPage({ product }: { product: Product }) {
             {/* --- Variants --- */}
             <div className="mt-2">
               <span className="font-medium mr-2 text-xs md:text-sm">
-                Variant:
+                Variant: {displayedVariant}
               </span>
               <div className="flex gap-2 mt-1 flex-wrap">
                 {allVariants.map((variant, idx) => {
@@ -102,9 +102,9 @@ export default function ProductPage({ product }: { product: Product }) {
             </div>
 
             {/* --- Description --- */}
-            {product.description && (
+            {/* {product.description && (
               <ProductDescription description={product.description} />
-            )}
+            )} */}
           </div>
         </div>
       </section>

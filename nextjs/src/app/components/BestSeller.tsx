@@ -12,7 +12,7 @@ export default async function BestSeller() {
   return (
     <section className="py-10 max-w-7xl mx-auto px-6 md:px-0">
       <h2 className="text-lg md:text-2xl font-medium text-center mb-10 tracking-wide">
-        BEST SELLER
+        Best Seller
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

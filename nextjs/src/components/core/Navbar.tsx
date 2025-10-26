@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu as MenuIcon, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar({ menus }: { menus: Menu[] }) {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
@@ -13,6 +13,17 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [results, setResults] = useState<{
+    products: any[];
+    categories: any[];
+    articles: any[];
+  }>({
+    products: [],
+    categories: [],
+    articles: [],
+  });
+
+  const [loading, setLoading] = useState(false);
 
   const sortedMenus = [...menus].sort((a, b) => a.order - b.order);
 
@@ -26,6 +37,30 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
     if (searchOpen) setSearchOpen(false);
     setMobileOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (searchQuery.trim().length === 0) {
+      setResults({ products: [], categories: [], articles: [] });
+      return;
+    }
+
+    const delayDebounce = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/global-search?q=${searchQuery}`
+        );
+        const data = await res.json();
+        setResults(data);
+      } catch (err) {
+        console.error("Search error:", err);
+      } finally {
+        setLoading(false);
+      }
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
@@ -105,7 +140,7 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
                     transition={{ duration: 0.15 }}
                     className="absolute left-0 mt-2 bg-white border shadow-sm py-2 min-w-[160px] z-50"
                   >
-                    {menu.submenus.map((sub) => (
+                    {menu.submenus.slice(0, 7).map((sub) => (
                       <Link
                         key={sub.id}
                         href={sub.href}
@@ -114,6 +149,13 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
                         {sub.title}
                       </Link>
                     ))}
+
+                    <Link
+                      href={menu.href || "#"}
+                      className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-50 hover:text-[#4B1E32] transition-colors border-t border-gray-200"
+                    >
+                      Show All
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -121,6 +163,7 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
           );
         })}
       </nav>
+
       {/* ===== SEARCH BAR ===== */}
       <AnimatePresence>
         {searchOpen && (
@@ -145,6 +188,56 @@ export default function Navbar({ menus }: { menus: Menu[] }) {
           </motion.div>
         )}
       </AnimatePresence>
+      {searchOpen && searchQuery && (
+        <div className="max-w-7xl mx-auto bg-white border-b-gray-200  my-2 ">
+          {loading ? (
+            <p className="px-4 py-3 text-gray-500 text-sm">Searching...</p>
+          ) : (
+            results &&
+            (() => {
+              // Gabungkan semua hasil (produk, kategori, artikel)
+              const mergedResults = [
+                ...(results.products || []).map((p: any) => ({
+                  id: p.id,
+                  slug: p.slug,
+                  name: p.title,
+                  type: "product",
+                })),
+                ...(results.categories || []).map((c: any) => ({
+                  id: c.id,
+                  slug: c.slug,
+                  name: c.title,
+                  type: "categories",
+                })),
+                ...(results.articles || []).map((a: any) => ({
+                  id: a.id,
+                  slug: a.slug,
+                  name: a.title,
+                  type: "collections",
+                })),
+              ];
+
+              return mergedResults.length > 0 ? (
+                mergedResults.map((item) => (
+                  <Link
+                    key={`${item.type}-${item.id}`}
+                    href={`/${item.type}/${item.slug}`}
+                    className="block px-4 py-2 text-gray-800 text-sm hover:bg-gray-50"
+                    onClick={() => setSearchOpen(false)}
+                  >
+                    <span className="capitalize font-medium">{item.name}</span>{" "}
+                    <span className="text-gray-400 text-xs">({item.type})</span>
+                  </Link>
+                ))
+              ) : (
+                <p className="px-4 py-3 text-gray-500 text-sm">
+                  No results found
+                </p>
+              );
+            })()
+          )}
+        </div>
+      )}
 
       {/* ===== MOBILE MENU ===== */}
       <AnimatePresence>
