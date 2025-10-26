@@ -4,6 +4,7 @@ import { formatRupiah } from "@/lib/formatRp";
 import { Product, ProductVariant } from "@/type";
 import Image from "next/image";
 import { useState } from "react";
+import ProductDescription from "./ProductDescription";
 import ProductImageGallery from "./ProductImageGallery";
 
 export default function ProductPage({ product }: { product: Product }) {
@@ -102,9 +103,9 @@ export default function ProductPage({ product }: { product: Product }) {
             </div>
 
             {/* --- Description --- */}
-            {/* {product.description && (
+            {product.description && (
               <ProductDescription description={product.description} />
-            )} */}
+            )}
           </div>
         </div>
       </section>

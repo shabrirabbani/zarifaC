@@ -18,11 +18,11 @@
       "type": "uid",
       "targetField": "title"
     },
-    "description": {
-      "type": "string"
-    },
     "price": {
       "type": "biginteger"
+    },
+    "description": {
+      "type": "blocks"
     },
     "sku": {
       "type": "string"

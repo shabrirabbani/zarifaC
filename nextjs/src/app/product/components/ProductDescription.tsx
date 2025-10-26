@@ -6,14 +6,26 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
-  description: string;
+  description?: string | null;
 };
 
 export default function ProductDescription({ description }: Props) {
   const [isOpen, setIsOpen] = useState(true);
 
-  const descParsing =
-    typeof description === "string" ? JSON.parse(description) : description;
+  let descParsing: any = null;
+
+  try {
+    if (description) {
+      descParsing =
+        typeof description === "string" ? JSON.parse(description) : description;
+    }
+  } catch (err) {
+    console.warn("Invalid description JSON:", err);
+    descParsing = null;
+  }
+
+  const hasContent =
+    descParsing && Array.isArray(descParsing) && descParsing.length > 0;
 
   return (
     <div className="mt-4">
@@ -42,7 +54,13 @@ export default function ProductDescription({ description }: Props) {
             className="overflow-hidden"
           >
             <div className="text-xs text-gray-600 mt-2 font-light tracking-wider">
-              <BlocksRenderer content={descParsing} />
+              {hasContent ? (
+                <BlocksRenderer content={descParsing} />
+              ) : (
+                <p className="italic text-gray-400">
+                  No description available.
+                </p>
+              )}
             </div>
           </motion.div>
         )}
