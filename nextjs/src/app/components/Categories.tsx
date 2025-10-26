@@ -12,7 +12,7 @@ export default async function ShopByCategories() {
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {categories?.map((cat, index) => (
+        {categories?.slice(0, 8).map((cat, index) => (
           <Link
             key={index}
             href={"/categories/" + cat.slug}

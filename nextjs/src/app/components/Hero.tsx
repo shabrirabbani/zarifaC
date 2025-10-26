@@ -20,16 +20,23 @@ export default async function Hero() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Text Content */}
-      <div className="relative z-10 text-center text-white px-4">
-        <p className="text-sm md:text-lg mb-6">{hero.title}</p>
-        <Link
-          href={hero.buttonLink}
-          className="bg-white/20 text-white px-12 py-3 font-medium text-sm md:text-base tracking-wide hover:bg-white/10 transition-all"
-        >
-          {hero.buttonText}
-        </Link>
-      </div>
+      {/* Text Content (hanya muncul jika ada title atau buttonText) */}
+      {(hero.title || hero.buttonText) && (
+        <div className="relative z-10 text-center text-white px-4">
+          {hero.title && (
+            <p className="text-sm md:text-lg mb-6">{hero.title}</p>
+          )}
+
+          {hero.buttonText && hero.buttonLink && (
+            <Link
+              href={hero.buttonLink}
+              className="bg-white/20 text-white px-12 py-3 font-medium text-sm md:text-base tracking-wide hover:bg-white/10 transition-all"
+            >
+              {hero.buttonText}
+            </Link>
+          )}
+        </div>
+      )}
     </section>
   );
 }

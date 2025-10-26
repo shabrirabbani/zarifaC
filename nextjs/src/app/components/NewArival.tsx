@@ -54,7 +54,7 @@ export default function NewArrivalSection({
       {/* Products */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {products.length > 0 ? (
-          products.map((product) => {
+          products.slice(0, 8).map((product) => {
             return (
               <div key={product.id} className="group cursor-pointer">
                 <Link href={`/product/${product.slug}`}>

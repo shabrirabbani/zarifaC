@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default async function BestSeller() {
   const products = await getProducts();
-  const bestSellers = products.filter(
-    (product) => product.isBestSeller === true
-  );
+  const bestSellers = products
+    .filter((product) => product.isBestSeller === true)
+    .slice(0, 8);
 
   return (
     <section className="py-10 max-w-7xl mx-auto px-6 md:px-0">
