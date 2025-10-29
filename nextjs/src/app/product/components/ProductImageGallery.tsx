@@ -36,7 +36,7 @@ export default function ProductImageGallery({
   return (
     <div className="w-full md:w-1/2 flex flex-col gap-4">
       {/* Main Image */}
-      <div className="w-full aspect-square relative overflow-hidden border rounded-lg">
+      <div className="w-full aspect-[3/4] relative overflow-hidden border rounded-lg">
         <Image
           src={mainImage}
           alt={title}
